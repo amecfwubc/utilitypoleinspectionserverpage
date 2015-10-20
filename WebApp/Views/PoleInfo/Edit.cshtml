@@ -1,0 +1,130 @@
+﻿@model WebApp.Models.PoleInfoViewModel
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2 style="text-align:center">Pole Information</h2>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+
+<script type="text/javascript">
+
+    $("document").ready(function () {
+        $("#TaskAddeddate").datepicker();
+        $("#TaskPerformeddate").datepicker();
+        //$("#PoleID")
+    });
+
+</script>
+}
+
+
+
+@using (Html.BeginForm("Edit", "PoleInfo", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        @Html.ActionLink("Back to List", "Index")
+        <hr />
+        @Html.ValidationSummary(true)
+        @Html.HiddenFor(model => model.ID)
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PoleID, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.TextBoxFor(model => model.PoleID, new { @readonly = "readonly" })
+                @Html.ValidationMessageFor(model => model.PoleID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TaskAssainUserID, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.TaskAssainUserID, (SelectList)ViewBag.TaskAssainUser)
+                @Html.ValidationMessageFor(model => model.TaskAssainUserID)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TypeID, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.TypeID, (SelectList)ViewBag.PoleType)
+                @Html.ValidationMessageFor(model => model.TypeID)
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TaskAddeddate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TaskAddeddate)
+                @Html.ValidationMessageFor(model => model.TaskAddeddate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TaskPerformeddate, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TaskPerformeddate)
+                @Html.ValidationMessageFor(model => model.TaskPerformeddate)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImageMapPath, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ImageMapPath)
+                <input type="file" name="ImageMapPathfile" value="Select Excel File" />
+                @Html.ValidationMessageFor(model => model.ImageMapPath)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.AdjacentPoleHeight, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.AdjacentPoleHeight)
+                @Html.ValidationMessageFor(model => model.AdjacentPoleHeight)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.TransFormerLoading, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.TransFormerLoading)
+                @Html.ValidationMessageFor(model => model.TransFormerLoading)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Notes, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Notes)
+                @Html.ValidationMessageFor(model => model.Notes)
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ImagesTakenpath, new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ImagesTakenpath)
+                <input type="file" name="ImagesTakenpathfile" value="Select Excel File" />
+                @Html.ValidationMessageFor(model => model.ImagesTakenpath)
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+
+

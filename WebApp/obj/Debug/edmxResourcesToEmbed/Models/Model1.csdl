@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PoleInfoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="PoleInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TypeID" Type="Int32" />
+    <Property Name="TaskAddeddate" Type="DateTime" Precision="3" />
+    <Property Name="TaskPerformeddate" Type="DateTime" Precision="3" />
+    <Property Name="ImageMapPath" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="AdjacentPoleHeight" Type="Double" />
+    <Property Name="TransFormerLoading" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="ImagesTakenpath" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PoleType" Relationship="Self.Fk_PoleInfo_PoleType" FromRole="PoleInfo" ToRole="PoleType" />
+  </EntityType>
+  <EntityType Name="PoleType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="PoleInfoes" Relationship="Self.Fk_PoleInfo_PoleType" FromRole="PoleType" ToRole="PoleInfo" />
+  </EntityType>
+  <Association Name="Fk_PoleInfo_PoleType">
+    <End Role="PoleType" Type="Self.PoleType" Multiplicity="0..1" />
+    <End Role="PoleInfo" Type="Self.PoleInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PoleType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PoleInfo">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="PoleInfoes" EntityType="Self.PoleInfo" />
+    <EntitySet Name="PoleTypes" EntityType="Self.PoleType" />
+    <AssociationSet Name="Fk_PoleInfo_PoleType" Association="Self.Fk_PoleInfo_PoleType">
+      <End Role="PoleType" EntitySet="PoleTypes" />
+      <End Role="PoleInfo" EntitySet="PoleInfoes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

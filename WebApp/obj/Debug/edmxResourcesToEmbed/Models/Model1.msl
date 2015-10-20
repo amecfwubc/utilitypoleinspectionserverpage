@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="PoleInfoModelStoreContainer" CdmEntityContainer="Entities">
+    <EntitySetMapping Name="PoleInfoes">
+      <EntityTypeMapping TypeName="PoleInfoModel.PoleInfo">
+        <MappingFragment StoreEntitySet="PoleInfo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="PoleID" ColumnName="PoleID" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="TaskAddeddate" ColumnName="TaskAddeddate" />
+          <ScalarProperty Name="TaskPerformeddate" ColumnName="TaskPerformeddate" />
+          <ScalarProperty Name="ImageMapPath" ColumnName="ImageMapPath" />
+          <ScalarProperty Name="AdjacentPoleHeight" ColumnName="AdjacentPoleHeight" />
+          <ScalarProperty Name="TransFormerLoading" ColumnName="TransFormerLoading" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="ImagesTakenpath" ColumnName="ImagesTakenpath" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PoleTypes">
+      <EntityTypeMapping TypeName="PoleInfoModel.PoleType">
+        <MappingFragment StoreEntitySet="PoleType">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TypeName" ColumnName="TypeName" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

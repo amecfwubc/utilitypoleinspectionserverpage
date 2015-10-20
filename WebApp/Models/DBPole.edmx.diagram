@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="c4d56ed9c3624a868cc2226d20a99ab9" Name="Diagram1">
+        <EntityTypeShape EntityType="PoleInfoModel1.FileSavePath" Width="1.5" PointX="5.375" PointY="0.75" />
+        <EntityTypeShape EntityType="PoleInfoModel1.AspNetUser" Width="1.5" PointX="0.75" PointY="5" />
+        <EntityTypeShape EntityType="PoleInfoModel1.AspNetRole" Width="1.5" PointX="3.375" PointY="6.625" />
+        <EntityTypeShape EntityType="PoleInfoModel1.PoleType" Width="1.5" PointX="7.875" PointY="10.25" />
+        <EntityTypeShape EntityType="PoleInfoModel1.PoleInfo" Width="1.5" PointX="10.125" PointY="6.125" />
+        <AssociationConnector Association="PoleInfoModel1.Fk_PoleInfo_PoleType" />
+        <EntityTypeShape EntityType="PoleInfoModel1.UserInformation" Width="1.5" PointX="5.625" PointY="4.625" />
+        <AssociationConnector Association="PoleInfoModel1.Fk_UserInformation_AspNetRoles" />
+        <AssociationConnector Association="PoleInfoModel1.Fk_UserInformation_AspNetUsers" />
+        <AssociationConnector Association="PoleInfoModel1.Fk_PoleInfo_UserInformation" />
+        <AssociationConnector Association="PoleInfoModel1.Fk_PoleInfo_UserInformation_UserID" />
+        <AssociationConnector Association="PoleInfoModel1.Fk_PoleType_UserInformation" />
+        </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

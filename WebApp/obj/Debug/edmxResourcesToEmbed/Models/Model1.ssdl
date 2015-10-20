@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PoleInfoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="PoleInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PoleID" Type="nvarchar" MaxLength="50" />
+    <Property Name="TypeID" Type="int" />
+    <Property Name="TaskAddeddate" Type="datetime" />
+    <Property Name="TaskPerformeddate" Type="datetime" />
+    <Property Name="ImageMapPath" Type="nvarchar" MaxLength="250" />
+    <Property Name="AdjacentPoleHeight" Type="float" />
+    <Property Name="TransFormerLoading" Type="nvarchar" MaxLength="250" />
+    <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+    <Property Name="ImagesTakenpath" Type="nvarchar" MaxLength="250" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <EntityType Name="PoleType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeName" Type="nvarchar" MaxLength="100" />
+    <Property Name="UserID" Type="nvarchar" MaxLength="128" />
+  </EntityType>
+  <Association Name="Fk_PoleInfo_PoleType">
+    <End Role="PoleType" Type="Self.PoleType" Multiplicity="0..1" />
+    <End Role="PoleInfo" Type="Self.PoleInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PoleType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PoleInfo">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="PoleInfoModelStoreContainer">
+    <EntitySet Name="PoleInfo" EntityType="Self.PoleInfo" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="PoleType" EntityType="Self.PoleType" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="Fk_PoleInfo_PoleType" Association="Self.Fk_PoleInfo_PoleType">
+      <End Role="PoleType" EntitySet="PoleType" />
+      <End Role="PoleInfo" EntitySet="PoleInfo" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

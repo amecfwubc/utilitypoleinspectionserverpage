@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="PoleInfoModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="PoleInfoEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="FileSavePaths" EntityType="PoleInfoModel1.FileSavePath" />
+    <EntitySet Name="AspNetUsers" EntityType="PoleInfoModel1.AspNetUser" />
+    <EntitySet Name="AspNetRoles" EntityType="PoleInfoModel1.AspNetRole" />
+    <EntitySet Name="PoleTypes" EntityType="PoleInfoModel1.PoleType" />
+    <EntitySet Name="PoleInfoes" EntityType="PoleInfoModel1.PoleInfo" />
+    <AssociationSet Name="Fk_PoleInfo_PoleType" Association="PoleInfoModel1.Fk_PoleInfo_PoleType">
+      <End Role="PoleType" EntitySet="PoleTypes" />
+      <End Role="PoleInfo" EntitySet="PoleInfoes" />
+    </AssociationSet>
+    <EntitySet Name="UserInformations" EntityType="PoleInfoModel1.UserInformation" />
+    <AssociationSet Name="Fk_UserInformation_AspNetRoles" Association="PoleInfoModel1.Fk_UserInformation_AspNetRoles">
+      <End Role="AspNetRole" EntitySet="AspNetRoles" />
+      <End Role="UserInformation" EntitySet="UserInformations" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_UserInformation_AspNetUsers" Association="PoleInfoModel1.Fk_UserInformation_AspNetUsers">
+      <End Role="AspNetUser" EntitySet="AspNetUsers" />
+      <End Role="UserInformation" EntitySet="UserInformations" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_PoleInfo_UserInformation" Association="PoleInfoModel1.Fk_PoleInfo_UserInformation">
+      <End Role="UserInformation" EntitySet="UserInformations" />
+      <End Role="PoleInfo" EntitySet="PoleInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_PoleInfo_UserInformation_UserID" Association="PoleInfoModel1.Fk_PoleInfo_UserInformation_UserID">
+      <End Role="UserInformation" EntitySet="UserInformations" />
+      <End Role="PoleInfo" EntitySet="PoleInfoes" />
+    </AssociationSet>
+    <AssociationSet Name="Fk_PoleType_UserInformation" Association="PoleInfoModel1.Fk_PoleType_UserInformation">
+      <End Role="UserInformation" EntitySet="UserInformations" />
+      <End Role="PoleType" EntitySet="PoleTypes" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="FileSavePath">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FilePath" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="FileFor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="AspNetUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserName" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Discriminator" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserInformations" Relationship="PoleInfoModel1.Fk_UserInformation_AspNetUsers" FromRole="AspNetUser" ToRole="UserInformation" />
+  </EntityType>
+  <EntityType Name="AspNetRole">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="UserInformations" Relationship="PoleInfoModel1.Fk_UserInformation_AspNetRoles" FromRole="AspNetRole" ToRole="UserInformation" />
+  </EntityType>
+  <EntityType Name="PoleType">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="Int32" />
+    <NavigationProperty Name="PoleInfoes" Relationship="PoleInfoModel1.Fk_PoleInfo_PoleType" FromRole="PoleType" ToRole="PoleInfo" />
+    <NavigationProperty Name="UserInformation" Relationship="PoleInfoModel1.Fk_PoleType_UserInformation" FromRole="PoleType" ToRole="UserInformation" />
+  </EntityType>
+  <EntityType Name="PoleInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="TypeID" Type="Int32" />
+    <Property Name="TaskAddeddate" Type="DateTime" Precision="3" />
+    <Property Name="TaskPerformeddate" Type="DateTime" Precision="3" />
+    <Property Name="TaskAssainUserID" Type="Int32" />
+    <Property Name="ImageMapPath" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="AdjacentPoleHeight" Type="Double" />
+    <Property Name="TransFormerLoading" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+    <Property Name="ImagesTakenpath" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="UserID" Type="Int32" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="TaskCompleteDate" Type="DateTime" Precision="3" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="PoleType" Relationship="PoleInfoModel1.Fk_PoleInfo_PoleType" FromRole="PoleInfo" ToRole="PoleType" />
+    <NavigationProperty Name="UserInformation" Relationship="PoleInfoModel1.Fk_PoleInfo_UserInformation" FromRole="PoleInfo" ToRole="UserInformation" />
+    <NavigationProperty Name="UserInformation1" Relationship="PoleInfoModel1.Fk_PoleInfo_UserInformation_UserID" FromRole="PoleInfo" ToRole="UserInformation" />
+  </EntityType>
+  <Association Name="Fk_PoleInfo_PoleType">
+    <End Type="PoleInfoModel1.PoleType" Role="PoleType" Multiplicity="0..1" />
+    <End Type="PoleInfoModel1.PoleInfo" Role="PoleInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="PoleType">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="PoleInfo">
+        <PropertyRef Name="TypeID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="UserInformation">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AspNetUserId" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="AspNetRoleID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserFullName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="CreateDate" Type="DateTime" Precision="3" />
+    <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+    <Property Name="UPassword" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="UserTypeID" Type="Int32" />
+    <NavigationProperty Name="AspNetRole" Relationship="PoleInfoModel1.Fk_UserInformation_AspNetRoles" FromRole="UserInformation" ToRole="AspNetRole" />
+    <NavigationProperty Name="AspNetUser" Relationship="PoleInfoModel1.Fk_UserInformation_AspNetUsers" FromRole="UserInformation" ToRole="AspNetUser" />
+    <NavigationProperty Name="PoleInfoes" Relationship="PoleInfoModel1.Fk_PoleInfo_UserInformation" FromRole="UserInformation" ToRole="PoleInfo" />
+    <NavigationProperty Name="PoleInfoes1" Relationship="PoleInfoModel1.Fk_PoleInfo_UserInformation_UserID" FromRole="UserInformation" ToRole="PoleInfo" />
+    <NavigationProperty Name="PoleTypes" Relationship="PoleInfoModel1.Fk_PoleType_UserInformation" FromRole="UserInformation" ToRole="PoleType" />
+  </EntityType>
+  <Association Name="Fk_UserInformation_AspNetRoles">
+    <End Type="PoleInfoModel1.AspNetRole" Role="AspNetRole" Multiplicity="0..1" />
+    <End Type="PoleInfoModel1.UserInformation" Role="UserInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetRole">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserInformation">
+        <PropertyRef Name="AspNetRoleID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_UserInformation_AspNetUsers">
+    <End Type="PoleInfoModel1.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+    <End Type="PoleInfoModel1.UserInformation" Role="UserInformation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="AspNetUser">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="UserInformation">
+        <PropertyRef Name="AspNetUserId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_PoleInfo_UserInformation">
+    <End Type="PoleInfoModel1.UserInformation" Role="UserInformation" Multiplicity="0..1" />
+    <End Type="PoleInfoModel1.PoleInfo" Role="PoleInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInformation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PoleInfo">
+        <PropertyRef Name="TaskAssainUserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_PoleInfo_UserInformation_UserID">
+    <End Type="PoleInfoModel1.UserInformation" Role="UserInformation" Multiplicity="0..1" />
+    <End Type="PoleInfoModel1.PoleInfo" Role="PoleInfo" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInformation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PoleInfo">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="Fk_PoleType_UserInformation">
+    <End Type="PoleInfoModel1.UserInformation" Role="UserInformation" Multiplicity="0..1" />
+    <End Type="PoleInfoModel1.PoleType" Role="PoleType" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="UserInformation">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="PoleType">
+        <PropertyRef Name="UserID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

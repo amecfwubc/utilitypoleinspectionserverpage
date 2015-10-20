@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>boostrap-dtpicker</id>
+    <version>1.0.0</version>
+    <title>Bootstrap based datepicker control</title>
+    <authors>CodeFirst</authors>
+    <owners>CodeFirst</owners>
+    <projectUrl>https://github.com/Code-First/bootstrap-dtpicker</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Bootstrap based datepicker control</description>
+  </metadata>
+</package>
