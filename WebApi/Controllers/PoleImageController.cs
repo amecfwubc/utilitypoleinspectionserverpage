@@ -59,7 +59,7 @@ namespace WebApi.Controllers
         private async void LoadImage()
         {
             string FileName = "";
-            string PoleImagePath = "http://masum:85//api/PoleImage/Get?FileName=" + FileName;
+            string PoleImagePath = "http://desktop-9bmhfp2:88//api/PoleImage/Get?FileName=" + FileName;
             using (var client = new HttpClient())
             {
                 using (var response = await client.GetAsync(PoleImagePath))
@@ -90,7 +90,7 @@ namespace WebApi.Controllers
         private async void LoadImage2()
         {
             string FileName = "";
-            string PoleImagePath = "http://masum:85//api/PoleImage/Get?FileName=" + FileName;
+            string PoleImagePath = "http://desktop-9bmhfp2:88//api/PoleImage/Get?FileName=" + FileName;
             using (var client = new HttpClient())
             {
                 using (var response = await client.GetAsync(PoleImagePath))
