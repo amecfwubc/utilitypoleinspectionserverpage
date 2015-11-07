@@ -12,7 +12,7 @@ namespace WebApp.Models
         public int? UserID { get; set; }
 
         [Required]
-        [Display(Name = "Assaiegn Person")]
+        [Display(Name = "Assigned Person")]
         public int? TaskAssainUserID { get; set; }
 
         [Required]
@@ -43,7 +43,7 @@ namespace WebApp.Models
         [Display(Name = "Taken Images")]
         public string ImagesTakenpath { get; set; }
 
-        [Display(Name = "Assaiegn Person")]
+        [Display(Name = "Assigned Person")]
         public string UserFullName { get; set; }
         
     }
