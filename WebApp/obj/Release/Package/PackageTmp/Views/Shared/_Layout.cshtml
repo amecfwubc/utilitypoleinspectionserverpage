@@ -6,9 +6,6 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
 
     <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     
@@ -29,10 +26,10 @@
 @if (Request.IsAuthenticated)
 {
                 <ul class="nav navbar-nav">
-                    <li class="LiBorder">@Html.ActionLink("Pole Information", "Index", "PoleInfo")</li>
-                    <li class="LiBorder">@Html.ActionLink("Pole Change Apply", "Index", "PoleInfoChangeApply")</li>
-                    <li class="LiBorder">@Html.ActionLink("Pole Images", "Index", "PoleImage")</li>
-                    <li>@*@Html.ActionLink("Contact", "Contact", "Home")*@</li>
+                    <li>@Html.ActionLink("Pole Information", "Index", "PoleInfo")</li>
+                    @*<li>@Html.ActionLink("Pole Import", "Index", "PoleInfo")</li>*@
+                    @*<li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>*@
                 </ul>
 }
                 @Html.Partial("_LoginPartial")
@@ -48,13 +45,8 @@
         </footer>
     </div>
 
-
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
 </body>
 </html>
-
-<style>
-    .LiBorder{
-        border-style:solid outset;
-
-    }
-</style>

@@ -21,9 +21,34 @@ namespace WebApp.Controllers
         // GET: /PoleImage/
         public ActionResult Index()
         {
-            var poleimages = db.PoleImages.Include(p => p.PoleInfo).Include(p => p.UserInformation);
-            return View(poleimages.ToList());
-           
+            //TempData["userInfo"] = new UserInformationController().GetUserByAspNetUserId(User.Identity.GetUserId());
+            //userInfo = TempData["userInfo"] as UserInformation ;
+            userInfo = new UserInformationController().GetUserByAspNetUserId(User.Identity.GetUserId());
+            //var poleimages = db.PoleImages.Include(p => p.PoleInfo).Include(p => p.UserInformation);
+            List<PoleImageViewModel> poleimglist = new List<PoleImageViewModel>();
+            //foreach(var itm in poleimages)
+            //{
+            //    PoleImageViewModel obj = new PoleImageViewModel();
+
+            //}
+
+            var data = (from p in db.PoleImages
+                        join pt in db.PoleInfoes on p.PoleInfoID equals pt.ID
+                        where (userInfo.UserTypeID == 1 || p.UserID == userInfo.Id)
+                        select new PoleImageViewModel
+                        {
+                            ID = p.ID,
+                            PoleInfoID=(int)p.PoleInfoID,
+                            ImageMapPath=p.ImageMapPath,
+                            //ImageBase64=PoleClass.ImageToBase64(p.ImageMapPath),
+                            Notes=p.Notes,
+                            PoleID = pt.PoleID
+
+                        }).ToList().OrderByDescending(p => p.ID);
+
+          
+
+            return View(data);
         }
 
         // GET: /PoleImage/Details/5
@@ -44,7 +69,8 @@ namespace WebApp.Controllers
         // GET: /PoleImage/Create
         public ActionResult Create()
         {
-            ViewBag.PoleInfoID = new SelectList(db.PoleInfoes, "ID", "PoleID");
+
+            ViewBag.PoleInfoID = new SelectList(GetPoleIDList(), "ID", "PoleID");
             ViewBag.UserID = new SelectList(db.UserInformations, "Id", "UserFullName");
             return View();
         }
@@ -61,16 +87,17 @@ namespace WebApp.Controllers
                 HttpPostedFileBase file = Request.Files[fileName];
             }
             //, IEnumerable files
-            var userbasic = new UserInformationController().GetUserByAspNetUserId(User.Identity.GetUserId());
+            //var userbasic = new UserInformationController().GetUserByAspNetUserId(User.Identity.GetUserId());
+            userInfo = TempData["userInfo"] as UserInformation;
             if (ModelState.IsValid)
             {
-                poleimage.UserID = userbasic.Id;
+                poleimage.UserID = userInfo.Id;
                 //db.PoleImages.Add(poleimage);
                 //db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.PoleInfoID = new SelectList(db.PoleInfoes, "ID", "PoleID", poleimage.PoleInfoID);
+            ViewBag.PoleInfoID = new SelectList(GetPoleIDList(), "ID", "PoleID", poleimage.PoleInfoID);
             ViewBag.UserID = new SelectList(db.UserInformations, "Id", "UserFullName", poleimage.UserID);
             return View(poleimage);
         }
@@ -274,10 +301,18 @@ namespace WebApp.Controllers
 
             //return Json(new { Success = 0, ex = new Exception("Unable to save").Message.ToString() });
         }
-        
 
 
 
+        private List<PoleInfo> GetPoleIDList()
+        {
+            userInfo = new UserInformationController().GetUserByAspNetUserId(User.Identity.GetUserId());
+            var data = (from p in db.PoleInfoes
+                        where (userInfo.UserTypeID == 1 || p.TaskAssainUserID == userInfo.Id)
+                        select  p).ToList();
+
+            return data;
+        }
 
 
 

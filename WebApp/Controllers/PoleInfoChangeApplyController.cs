@@ -5,15 +5,17 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using WebApp.Models;
-
+using Microsoft.AspNet.Identity;
 namespace WebApp.Controllers
 {
     public class PoleInfoChangeApplyController : Controller
     {
+        private UserInformation userInfo { get; set; }
         //
         // GET: /PoleInfoChangeApply/
         public ActionResult Index()
         {
+            userInfo = new UserInformationController().GetUserByAspNetUserId(User.Identity.GetUserId());
             var data = GetSearchData();
             return View(data);
         }
@@ -148,6 +150,7 @@ namespace WebApp.Controllers
                         join u in objE.UserInformations on p.TaskAssainUserID equals u.Id into asinGroup
                         from type in typegroup.DefaultIfEmpty()
                         from asain in asinGroup.DefaultIfEmpty()
+                        where (userInfo.UserTypeID == 1 || (p.UserID == userInfo.Id))
                         select new PoleInfoViewModel
                         {
                             ID = p.ID,

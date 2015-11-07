@@ -474,6 +474,7 @@
     <Content Include="Views\PoleImage\Edit.cshtml" />
     <Content Include="Views\PoleImage\Index.cshtml" />
     <Content Include="Views\PoleImage\Create.cshtml" />
+    <Content Include="Views\Account\RegisterSuccess.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

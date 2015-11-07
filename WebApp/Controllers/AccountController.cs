@@ -35,6 +35,7 @@ namespace WebApp.Controllers
         public ActionResult Login(string returnUrl)
         {
             ViewBag.ReturnUrl = returnUrl;
+            //ViewBag.UserType = 0;
             return View();
         }
 
@@ -51,7 +52,17 @@ namespace WebApp.Controllers
                 if (user != null)
                 {
                     Session["UserID"] = user.Id;
+                    
                     UserBasicInfo = new UserInformationController().GetUserByAspNetUserId(user.Id);
+                    Session["UserTypeID"] = UserBasicInfo.UserTypeID;
+                    ViewBag.UserType = UserBasicInfo.UserTypeID;
+                    Session["UserTypeID"] = UserBasicInfo.UserTypeID;
+
+                    var userCookie = new HttpCookie("UserTypeID", UserBasicInfo.UserTypeID.ToString());
+                    //userCookie.Expires.AddDays(365);
+                    HttpContext.Response.Cookies.Add(userCookie);
+
+                    //User.IsInRole(UserBasicInfo.UserTypeID.ToString());
                     await SignInAsync(user, model.RememberMe);
                     return RedirectToLocal(returnUrl);
                 }
@@ -74,6 +85,8 @@ namespace WebApp.Controllers
             ViewBag.AspNetRole = new SelectList(objE.AspNetRoles.ToList(), "Id", "Name");
             return View();
         }
+
+
 
         //
         // POST: /Account/Register
@@ -101,9 +114,8 @@ namespace WebApp.Controllers
                     objuser.UserTypeID = 2;
                     objController.Save(objuser);
                     #endregion
-                    //await SignInAsync(user, isPersistent: false);
-                    return RedirectToAction("Index", "Home");
-                    //return View();
+                   // await SignInAsync(user, isPersistent: false);
+                    return RedirectToAction("RegisterSuccess", "Account");
                 }
                 else
                 {
@@ -113,6 +125,12 @@ namespace WebApp.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        public ActionResult RegisterSuccess()
+        {
+            ViewBag.SuccessMessage = "User created successfully";
+            return View();
         }
 
         //
@@ -354,7 +372,9 @@ namespace WebApp.Controllers
         private async Task SignInAsync(ApplicationUser user, bool isPersistent)
         {
             AuthenticationManager.SignOut(DefaultAuthenticationTypes.ExternalCookie);
+            
             var identity = await UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+
             AuthenticationManager.SignIn(new AuthenticationProperties() { IsPersistent = isPersistent }, identity);
         }
 

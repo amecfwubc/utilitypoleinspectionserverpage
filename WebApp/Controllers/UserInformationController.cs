@@ -150,7 +150,7 @@ namespace WebApp.Controllers
 
         public IEnumerable<UserInformation> GetDropdownData()
         {
-            return db.UserInformations.Where(p => p.IsActive == true || p.IsActive == null).ToList();
+            return db.UserInformations.Where(p =>p.IsActive == true || p.IsActive == null).ToList();
         }
 
         public UserInformation GetUserById(int Id)
@@ -161,6 +161,17 @@ namespace WebApp.Controllers
         public UserInformation GetUserByAspNetUserId(string AspNetUserId)
         {
             return db.UserInformations.Where(p => p.AspNetUserId == AspNetUserId).FirstOrDefault();
+        }
+
+        public IEnumerable<UserInformation> GetDropdownData(string AspNetUserId)
+        {
+            var userInfo = new UserInformationController().GetUserByAspNetUserId(AspNetUserId);
+            //db.UserInformations.Where(p =>p.IsActive == true || p.IsActive == null).ToList()
+            var data = (from p in db.UserInformations
+                        where (userInfo.UserTypeID == 1 || p.Id == userInfo.Id)
+                        select p).ToList();
+
+            return data;
         }
 
 

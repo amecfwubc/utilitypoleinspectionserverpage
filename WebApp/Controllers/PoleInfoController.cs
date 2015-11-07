@@ -17,6 +17,7 @@ namespace WebApp.Controllers
     
     public class PoleInfoController : Controller
     {
+        PoleInfoEntities objE = new PoleInfoEntities();
         private UserInformation userInfo { get; set; }
 
         //
@@ -57,9 +58,10 @@ namespace WebApp.Controllers
         // GET: /PoleInfo/Create
         public ActionResult Create()
         {
-            PoleInfoEntities objE = new PoleInfoEntities();
+            //PoleInfoEntities objE = new PoleInfoEntities();
             ViewBag.PoleType = new SelectList(objE.PoleTypes.ToList(), "ID", "TypeName");
-            ViewBag.TaskAssainUser = new SelectList(new UserInformationController().GetDropdownData(), "ID", "UserFullName");
+            string aID = User.Identity.GetUserId();
+            ViewBag.TaskAssainUser = new SelectList(new UserInformationController().GetDropdownData(aID), "ID", "UserFullName");
             return View();
         }
 
@@ -85,7 +87,7 @@ namespace WebApp.Controllers
                 obj.Notes = PoleInfo.Notes;
 
                 //obj.UserID = User.Identity.GetUserId();
-                PoleInfoEntities objE = new PoleInfoEntities();
+                //PoleInfoEntities objE = new PoleInfoEntities();
                 var FileSavePathList = objE.FileSavePaths.ToList();
 
                 if (Request.Files["ImageMapPathfile"].ContentLength > 0)
@@ -141,7 +143,7 @@ namespace WebApp.Controllers
         public ActionResult Edit(int id)
         {
 
-            PoleInfoEntities objE = new PoleInfoEntities();
+            //PoleInfoEntities objE = new PoleInfoEntities();
             var data = (from p in objE.PoleInfoes.Where(p=>p.ID==id).ToList()
                         select new PoleInfoViewModel
                         {
@@ -162,7 +164,8 @@ namespace WebApp.Controllers
                         }).SingleOrDefault();
 
             ViewBag.PoleType = new SelectList(objE.PoleTypes.ToList(), "ID", "TypeName", data.TypeID);
-            ViewBag.TaskAssainUser = new SelectList(new UserInformationController().GetDropdownData(), "ID", "UserFullName", data.TaskAssainUserID);
+            string aID = User.Identity.GetUserId();
+            ViewBag.TaskAssainUser = new SelectList(new UserInformationController().GetDropdownData(aID), "ID", "UserFullName", data.TaskAssainUserID);
             return View(data);
         }
 
@@ -189,7 +192,7 @@ namespace WebApp.Controllers
                 obj.UpdateDate = DateTime.Now;
 
                 //obj.UserID = User.Identity.GetUserId();
-                PoleInfoEntities objE = new PoleInfoEntities();
+                //PoleInfoEntities objE = new PoleInfoEntities();
                 var FileSavePathList = objE.FileSavePaths.ToList();
 
                 if (Request.Files["ImageMapPathfile"].ContentLength > 0)
@@ -256,7 +259,7 @@ namespace WebApp.Controllers
 
                 // TODO: Add delete logic here
 
-                PoleInfoEntities objE = new PoleInfoEntities();
+                //PoleInfoEntities objE = new PoleInfoEntities();
 
 
                 var objPoleInfo = objE.PoleInfoes.Find(id);
@@ -277,8 +280,8 @@ namespace WebApp.Controllers
         // GET: /PoleInfo/Import
         public ActionResult Import()
         {
-
-            ViewBag.TaskAssainUser = new SelectList(new UserInformationController().GetDropdownData(), "ID", "UserFullName");
+            string aID = User.Identity.GetUserId();
+            ViewBag.TaskAssainUser = new SelectList(new UserInformationController().GetDropdownData(aID), "ID", "UserFullName");
             return View();
         }
 
@@ -477,7 +480,7 @@ namespace WebApp.Controllers
 
         private IEnumerable GetSearchData(UserInformation User)
         {
-            PoleInfoEntities objE = new PoleInfoEntities();
+            
             var data = (from p in objE.PoleInfoes
                         join t in objE.PoleTypes on p.TypeID equals t.ID into typegroup
                         join u in objE.UserInformations on p.TaskAssainUserID equals u.Id
@@ -503,6 +506,20 @@ namespace WebApp.Controllers
             return data;
         }
 
+        private IEnumerable GetPoleIDList()
+        {
+            userInfo = new UserInformationController().GetUserByAspNetUserId(User.Identity.GetUserId());
+            var data = (from p in objE.PoleInfoes
+                        where (userInfo.UserTypeID == 1 || p.UserID == userInfo.Id)
+                        select new PoleImageViewModel
+                        {
+                            ID = p.ID,
+                            PoleID = p.PoleID
+
+                        }).ToList();
+
+            return data;
+        }
 
     }
 }

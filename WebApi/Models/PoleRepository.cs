@@ -110,7 +110,7 @@ namespace WebApi.Models
                 data.AdjacentPoleHeight = poleinfo.AdjacentPoleHeight;
                 data.TransFormerLoading = poleinfo.TransFormerLoading;
                 data.Notes = poleinfo.Notes;
-                data.UserID = data.UserID;
+                data.UserID = poleinfo.UserID;
 
                 db.Entry(data).State = EntityState.Added;
             //}

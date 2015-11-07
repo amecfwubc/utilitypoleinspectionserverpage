@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -29,12 +30,14 @@
 @if (Request.IsAuthenticated)
 {
                 <ul class="nav navbar-nav">
+                    
                     <li class="LiBorder">@Html.ActionLink("Pole Information", "Index", "PoleInfo")</li>
                     <li class="LiBorder">@Html.ActionLink("Pole Change Apply", "Index", "PoleInfoChangeApply")</li>
                     <li class="LiBorder">@Html.ActionLink("Pole Images", "Index", "PoleImage")</li>
                     <li>@*@Html.ActionLink("Contact", "Contact", "Home")*@</li>
                 </ul>
 }
+
                 @Html.Partial("_LoginPartial")
             </div>
 

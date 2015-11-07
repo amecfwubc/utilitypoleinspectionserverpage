@@ -17,13 +17,6 @@
         <AssociationConnector Association="PoleInfoModel1.Fk_PoleInfo_UserInformation" />
         <AssociationConnector Association="PoleInfoModel1.Fk_PoleInfo_UserInformation_UserID" />
         <AssociationConnector Association="PoleInfoModel1.Fk_PoleType_UserInformation" />
-        <EntityTypeShape EntityType="PoleInfoModel1.PoleInfoChangeApply" Width="1.5" PointX="13.125" PointY="6.25" />
-        <AssociationConnector Association="PoleInfoModel1.Fk_PoleInfoChangeApply_PoleType" />
-        <AssociationConnector Association="PoleInfoModel1.Fk_PoleInfoChangeApply_UserInformation" />
-        <AssociationConnector Association="PoleInfoModel1.Fk_PoleInfoChangeApply_UserInformation_UserID" />
-        <EntityTypeShape EntityType="PoleInfoModel1.PoleImage" Width="1.5" PointX="15.375" PointY="6.375" />
-        <AssociationConnector Association="PoleInfoModel1.Fk_PoleImages_PoleInfo" />
-        <AssociationConnector Association="PoleInfoModel1.Fk_PoleImages_UserInformation_UserID" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

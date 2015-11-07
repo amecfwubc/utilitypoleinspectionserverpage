@@ -1,4 +1,4 @@
-﻿@model IEnumerable<WebApp.Models.PoleImage>
+﻿@model IEnumerable<WebApp.Models.PoleImageViewModel>
 
 @{
     ViewBag.Title = "Index";
@@ -12,6 +12,9 @@
 <table class="table">
     <tr>
         <th>
+            @Html.DisplayNameFor(model => model.PoleID)
+        </th>
+        <th>
             @Html.DisplayNameFor(model => model.ImageMapPath)
         </th>
         <th>
@@ -23,17 +26,15 @@
         <th>
             @Html.DisplayNameFor(model => model.UpdateDate)
         </th>
-        <th>
-            @Html.DisplayNameFor(model => model.PoleInfo.PoleID)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserInformation.UserFullName)
-        </th>
+
         <th></th>
     </tr>
 
 @foreach (var item in Model) {
     <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.PoleID)
+        </td>
         <td>
             @Html.DisplayFor(modelItem => item.ImageMapPath)
             @*<img src="@Url.Content(@item.ImageMapPath)" alt="No Image" />*@
@@ -47,12 +48,7 @@
         <td>
             @Html.DisplayFor(modelItem => item.UpdateDate)
         </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.PoleInfo.PoleID)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserInformation.UserFullName)
-        </td>
+
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
             @Html.ActionLink("Details", "Details", new { id=item.ID }) |
