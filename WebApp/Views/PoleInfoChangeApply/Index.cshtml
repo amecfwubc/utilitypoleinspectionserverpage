@@ -1,0 +1,74 @@
+﻿@model IEnumerable<WebApp.Models.PoleInfoViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Pole Change Apply</h2>
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.PoleID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaskAddeddate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TaskPerformeddate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageMapPath)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AdjacentPoleHeight)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TransFormerLoading)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Notes)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagesTakenpath)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.ActionLink("Details", "Details", new { id = item.ID })
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PoleID)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaskAddeddate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TaskPerformeddate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageMapPath)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AdjacentPoleHeight)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TransFormerLoading)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Notes)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImagesTakenpath)
+        </td>
+        <td>
+           @Html.ActionLink("Delete", "Delete", new { id=item.ID })
+        </td>
+    </tr>
+}
+
+</table>

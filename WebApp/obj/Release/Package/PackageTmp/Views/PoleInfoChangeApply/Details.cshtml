@@ -1,0 +1,97 @@
+﻿@model WebApp.Models.PoleInfoViewModel
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Pole Detail</h2>
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+	<hr />
+
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.PoleID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PoleID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.TypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskAddeddate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskAddeddate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaskPerformeddate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaskPerformeddate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageMapPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageMapPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AdjacentPoleHeight)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AdjacentPoleHeight)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TransFormerLoading)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TransFormerLoading)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagesTakenpath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImagesTakenpath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserFullName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserFullName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    
+</p>

@@ -1,0 +1,103 @@
+﻿@model WebApp.Models.PoleImage
+
+@{
+    ViewBag.Title = "Create";
+}
+@section Scripts {
+
+    @Scripts.Render("~/bundles/modernizr")
+    @Styles.Render("~/Content/dropzonescss")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/dropzonescripts")
+}
+<h2>Create</h2>
+<script>
+    $(document).ready(function () {
+
+    });
+
+
+    function Save() {
+
+        if (dropzoneForm.children.length == 0)
+        {
+            alert("NO Image Found to save");
+            return;
+        }
+
+        var PoleImage = { "ID": "", "PoleID": "", "PoleInfoID": "", "Image64": "" };
+        var PoleImages=[]
+
+        var selectedPoleId = $("#PoleInfoID :selected").text();
+        var vPoleInfoID = $("#PoleInfoID :selected").val();
+        for (var i = 1; i < dropzoneForm.children.length; i++) {
+            var imagediv = dropzoneForm.children[i];
+            var img64 = imagediv.getElementsByTagName("img")[0].src
+
+            PoleImage.ID = i;
+            PoleImage.PoleID = selectedPoleId;
+            PoleImage.PoleInfoID = vPoleInfoID;
+            PoleImage.Image64 = img64;
+            PoleImages.push(PoleImage);
+
+            var PoleImage ={"ID": "", "PoleID": "", "Image64": ""};
+        }
+
+        $.ajax({
+            url: '/PoleImage/SaveUploadedPoleImage',
+            data: JSON.stringify(PoleImages),
+            type: 'POST',
+            contentType: 'application/json;',
+            dataType: 'json',
+            success: function (result) {
+
+                debugger;
+                if (result.Success == "1") {
+                    alert('Successfully Saved Pole Image');
+                }
+                else if (result.Success == "3") {
+                    alert('No Image Found to Save');
+                }
+                else {
+                    alert("Error Occured In Transaction");
+                }
+            }
+        });
+    }
+
+</script>
+
+@using (Html.BeginForm("Create", "PoleImage", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>Pole Image Upload </h4>
+        @Html.ActionLink("Back to List", "Index")
+        <hr />
+        @Html.ValidationSummary(true)
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.PoleInfoID, "PoleInfoID", new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("PoleInfoID", String.Empty)
+                @Html.ValidationMessageFor(model => model.PoleInfoID)
+            </div>
+        </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="button" value="Save" class="btn btn-default" onclick="Save()" />
+            </div>
+        </div>
+    </div>
+
+}
+
+
+
+@Html.FileUploadForm("../PoleImage/SaveUploadedFile")
+
+

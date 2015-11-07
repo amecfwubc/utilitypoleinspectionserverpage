@@ -1,0 +1,66 @@
+﻿@model WebApp.Models.PoleImage
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>PoleImage</h4>
+	<hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ImageMapPath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImageMapPath)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Notes)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Notes)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdateDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdateDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PoleInfo.PoleID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PoleInfo.PoleID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserInformation.AspNetUserId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserInformation.AspNetUserId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

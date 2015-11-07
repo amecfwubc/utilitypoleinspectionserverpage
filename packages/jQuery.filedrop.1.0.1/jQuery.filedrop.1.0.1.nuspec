@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2010/07/nuspec.xsd">
+  <metadata>
+    <id>jQuery.filedrop</id>
+    <version>1.0.1</version>
+    <title>jQuery filedrop plugin</title>
+    <authors>Piotr Sobczak</authors>
+    <owners>Piotr Sobczak</owners>
+    <projectUrl>https://github.com/weixiyen/jquery-filedrop</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>HTML5 drag desktop files into browser
+
+jQuery filedrop uses the HTML5 File API to allow users to drag multiple files from desktop to the browser, uploading each file to a user-specified URL.
+
+file</description>
+    <releaseNotes />
+  </metadata>
+</package>
