@@ -63,6 +63,7 @@
     <EntitySetMapping Name="UserInformations">
       <EntityTypeMapping TypeName="PoleInfoModel1.UserInformation">
         <MappingFragment StoreEntitySet="UserInformation">
+          <ScalarProperty Name="UserTypeID" ColumnName="UserTypeID" />
           <ScalarProperty Name="UPassword" ColumnName="UPassword" />
           <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
           <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
@@ -73,6 +74,41 @@
           <ScalarProperty Name="AspNetRoleID" ColumnName="AspNetRoleID" />
           <ScalarProperty Name="AspNetUserId" ColumnName="AspNetUserId" />
           <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PoleInfoChangeApplies">
+      <EntityTypeMapping TypeName="PoleInfoModel1.PoleInfoChangeApply">
+        <MappingFragment StoreEntitySet="PoleInfoChangeApply">
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="TaskCompleteDate" ColumnName="TaskCompleteDate" />
+          <ScalarProperty Name="IsChanged" ColumnName="IsChanged" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ImagesTakenpath" ColumnName="ImagesTakenpath" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="TransFormerLoading" ColumnName="TransFormerLoading" />
+          <ScalarProperty Name="AdjacentPoleHeight" ColumnName="AdjacentPoleHeight" />
+          <ScalarProperty Name="ImageMapPath" ColumnName="ImageMapPath" />
+          <ScalarProperty Name="TaskAssainUserID" ColumnName="TaskAssainUserID" />
+          <ScalarProperty Name="TaskPerformeddate" ColumnName="TaskPerformeddate" />
+          <ScalarProperty Name="TaskAddeddate" ColumnName="TaskAddeddate" />
+          <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+          <ScalarProperty Name="PoleID" ColumnName="PoleID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PoleImages">
+      <EntityTypeMapping TypeName="PoleInfoModel1.PoleImage">
+        <MappingFragment StoreEntitySet="PoleImages">
+          <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+          <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+          <ScalarProperty Name="Notes" ColumnName="Notes" />
+          <ScalarProperty Name="UserID" ColumnName="UserID" />
+          <ScalarProperty Name="ImageMapPath" ColumnName="ImageMapPath" />
+          <ScalarProperty Name="PoleInfoID" ColumnName="PoleInfoID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

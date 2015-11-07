@@ -19,6 +19,8 @@ namespace WebApi.Models
             this.PoleInfoes = new HashSet<PoleInfo>();
             this.PoleInfoes1 = new HashSet<PoleInfo>();
             this.PoleTypes = new HashSet<PoleType>();
+            this.PoleInfoChangeApplies = new HashSet<PoleInfoChangeApply>();
+            this.PoleInfoChangeApplies1 = new HashSet<PoleInfoChangeApply>();
         }
     
         public int Id { get; set; }
@@ -31,11 +33,14 @@ namespace WebApi.Models
         public Nullable<System.DateTime> CreateDate { get; set; }
         public Nullable<System.DateTime> UpdateDate { get; set; }
         public string UPassword { get; set; }
+        public Nullable<int> UserTypeID { get; set; }
     
         public virtual AspNetRole AspNetRole { get; set; }
         public virtual AspNetUser AspNetUser { get; set; }
         public virtual ICollection<PoleInfo> PoleInfoes { get; set; }
         public virtual ICollection<PoleInfo> PoleInfoes1 { get; set; }
         public virtual ICollection<PoleType> PoleTypes { get; set; }
+        public virtual ICollection<PoleInfoChangeApply> PoleInfoChangeApplies { get; set; }
+        public virtual ICollection<PoleInfoChangeApply> PoleInfoChangeApplies1 { get; set; }
     }
 }

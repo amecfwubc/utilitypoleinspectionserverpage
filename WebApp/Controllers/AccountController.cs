@@ -103,6 +103,7 @@ namespace WebApp.Controllers
                     #endregion
                     //await SignInAsync(user, isPersistent: false);
                     return RedirectToAction("Index", "Home");
+                    //return View();
                 }
                 else
                 {

@@ -12,7 +12,7 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-
+        @Html.ActionLink("Back to List", "Index")
         <hr />
         @Html.ValidationSummary(true)
 
@@ -39,9 +39,7 @@
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")

@@ -16,6 +16,10 @@
         <AssociationConnector Association="PoleInfoModel.Fk_PoleInfo_UserInformation" />
         <AssociationConnector Association="PoleInfoModel.Fk_PoleInfo_UserInformation_UserID" />
         <AssociationConnector Association="PoleInfoModel.Fk_PoleType_UserInformation" />
+        <EntityTypeShape EntityType="PoleInfoModel.PoleInfoChangeApply" Width="1.5" PointX="10.5" PointY="4.125" />
+        <AssociationConnector Association="PoleInfoModel.Fk_PoleInfoChangeApply_PoleType" />
+        <AssociationConnector Association="PoleInfoModel.Fk_PoleInfoChangeApply_UserInformation" />
+        <AssociationConnector Association="PoleInfoModel.Fk_PoleInfoChangeApply_UserInformation_UserID" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

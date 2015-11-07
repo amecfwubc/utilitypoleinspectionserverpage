@@ -12,7 +12,7 @@ namespace WebApp.Models
         public int? UserID { get; set; }
 
         [Required]
-        [Display(Name = "Assigned To")]
+        [Display(Name = "Assigned Person")]
         public int? TaskAssainUserID { get; set; }
 
         [Required]
@@ -36,7 +36,7 @@ namespace WebApp.Models
         public string ImageMapPath { get; set; }
         [Display(Name = "Adjacent Pole Height")]
         public double? AdjacentPoleHeight { get; set; }
-        [Display(Name = "Trans Former Loading")]
+        [Display(Name = "Transformer Loading")]
         public string TransFormerLoading { get; set; }
 
         public string Notes { get; set; }
@@ -47,7 +47,7 @@ namespace WebApp.Models
         public string UserFullName { get; set; }
         
     }
-
+   
     public class PoleTypeViewModel
     {
 

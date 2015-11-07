@@ -185,6 +185,9 @@
     <Compile Include="Models\PoleInfo.cs">
       <DependentUpon>PoleDB.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PoleInfoChangeApply.cs">
+      <DependentUpon>PoleDB.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\UserRepository.cs" />
     <Compile Include="Models\PoleRepository.cs" />
     <Compile Include="Models\PoleType.cs">

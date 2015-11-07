@@ -300,20 +300,23 @@ namespace WebApp.Controllers
 
                     if (fileExtension == ".xls" || fileExtension == ".xlsx")
                     {
-                        //return RedirectToAction("Index");
+                        
                         string fileLocation = Server.MapPath("~/Content/") + Request.Files["file"].FileName;
+                        
                         if (System.IO.File.Exists(fileLocation))
                         {
 
                             System.IO.File.Delete(fileLocation);
                         }
+                        
                         Request.Files["file"].SaveAs(fileLocation);
-
+                        
                         //string _UserID = User.Identity.GetUserId();
                         userInfo = new UserInformationController().GetUserByAspNetUserId(User.Identity.GetUserId());
-
+                        
                         DataTable tbl1 = SQLHelper.GetExcelData(fileLocation, "PoleData");
                         var drs = tbl1.Select("isnull(PoleID,'')=''");
+                        
                         foreach (DataRow row in drs)
                         {
                             tbl1.Rows.Remove(row);
@@ -370,14 +373,13 @@ namespace WebApp.Controllers
 
                 }
 
-                //return RedirectToAction("Create");
 
                 return RedirectToAction("Index");
             }
             catch(Exception ex)
             {
                 string dd = ex.Message;
-                return View();
+                return View(ex.Message);
             }
         }
 

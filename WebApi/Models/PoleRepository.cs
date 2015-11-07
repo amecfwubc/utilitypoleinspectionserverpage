@@ -97,13 +97,11 @@ namespace WebApi.Models
 
         public PoleInfo Add(PoleInfo poleinfo)
         {
-            //item.Id = _nextId++;
-            //products.Add(item);
-            //var Type = db.PoleTypes.FirstOrDefault(p => p.TypeName == poleinfo.TypeName.ToString());
-            var data = db.PoleInfoes.Where(p => p.PoleID == poleinfo.PoleID).SingleOrDefault();
-            if (data == null)
-            {
-                data = new PoleInfo();
+
+            //var data = db.PoleInfoChangeApplies.Where(p => p.PoleID == poleinfo.PoleID).SingleOrDefault();
+            //if (data == null)
+            //{
+                var data = new PoleInfoChangeApply();
                 data.PoleID = poleinfo.PoleID;
                 data.TaskAddeddate = poleinfo.TaskAddeddate;
                 data.TaskPerformeddate = poleinfo.TaskPerformeddate;
@@ -115,19 +113,19 @@ namespace WebApi.Models
                 data.UserID = data.UserID;
 
                 db.Entry(data).State = EntityState.Added;
-            }
-            else if (data!=null)
-            {
-                data.TaskAddeddate = poleinfo.TaskAddeddate;
-                data.TaskPerformeddate = poleinfo.TaskPerformeddate;
-                data.TypeID = poleinfo.TypeID;
-                data.TaskAssainUserID = poleinfo.TaskAssainUserID;
-                data.AdjacentPoleHeight = poleinfo.AdjacentPoleHeight;
-                data.TransFormerLoading = poleinfo.TransFormerLoading;
-                data.Notes = poleinfo.Notes;
+            //}
+            //else if (data!=null)
+            //{
+            //    data.TaskAddeddate = poleinfo.TaskAddeddate;
+            //    data.TaskPerformeddate = poleinfo.TaskPerformeddate;
+            //    data.TypeID = poleinfo.TypeID;
+            //    data.TaskAssainUserID = poleinfo.TaskAssainUserID;
+            //    data.AdjacentPoleHeight = poleinfo.AdjacentPoleHeight;
+            //    data.TransFormerLoading = poleinfo.TransFormerLoading;
+            //    data.Notes = poleinfo.Notes;
 
-                db.Entry(data).State = EntityState.Modified;
-            }
+            //    db.Entry(data).State = EntityState.Modified;
+            //}
 
 
 

@@ -31,5 +31,7 @@ namespace WebApp.Models
         public virtual DbSet<PoleType> PoleTypes { get; set; }
         public virtual DbSet<PoleInfo> PoleInfoes { get; set; }
         public virtual DbSet<UserInformation> UserInformations { get; set; }
+        public virtual DbSet<PoleInfoChangeApply> PoleInfoChangeApplies { get; set; }
+        public virtual DbSet<PoleImage> PoleImages { get; set; }
     }
 }

@@ -30,6 +30,18 @@
           <Property Name="FilePath" Type="nvarchar" MaxLength="250" Nullable="false" />
           <Property Name="FileFor" Type="nvarchar" MaxLength="100" Nullable="false" />
         </EntityType>
+        <EntityType Name="PoleImages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PoleInfoID" Type="int" />
+          <Property Name="ImageMapPath" Type="nvarchar" MaxLength="250" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
         <EntityType Name="PoleInfo">
           <Key>
             <PropertyRef Name="ID" />
@@ -47,6 +59,27 @@
           <Property Name="ImagesTakenpath" Type="nvarchar" MaxLength="250" />
           <Property Name="UserID" Type="int" />
           <Property Name="IsActive" Type="bit" />
+          <Property Name="TaskCompleteDate" Type="datetime" />
+          <Property Name="CreateDate" Type="datetime" />
+          <Property Name="UpdateDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="PoleInfoChangeApply">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PoleID" Type="nvarchar" MaxLength="50" />
+          <Property Name="TypeID" Type="int" />
+          <Property Name="TaskAddeddate" Type="datetime" />
+          <Property Name="TaskPerformeddate" Type="datetime" />
+          <Property Name="TaskAssainUserID" Type="int" />
+          <Property Name="ImageMapPath" Type="nvarchar" MaxLength="250" />
+          <Property Name="AdjacentPoleHeight" Type="float" />
+          <Property Name="TransFormerLoading" Type="nvarchar" MaxLength="250" />
+          <Property Name="Notes" Type="nvarchar" MaxLength="1000" />
+          <Property Name="ImagesTakenpath" Type="nvarchar" MaxLength="250" />
+          <Property Name="UserID" Type="int" />
+          <Property Name="IsChanged" Type="bit" />
           <Property Name="TaskCompleteDate" Type="datetime" />
           <Property Name="CreateDate" Type="datetime" />
           <Property Name="UpdateDate" Type="datetime" />
@@ -75,6 +108,30 @@
           <Property Name="UPassword" Type="nvarchar" MaxLength="100" />
           <Property Name="UserTypeID" Type="int" />
         </EntityType>
+        <Association Name="Fk_PoleImages_PoleInfo">
+          <End Role="PoleInfo" Type="Self.PoleInfo" Multiplicity="0..1" />
+          <End Role="PoleImages" Type="Self.PoleImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PoleInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PoleImages">
+              <PropertyRef Name="PoleInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_PoleImages_UserInformation_UserID">
+          <End Role="UserInformation" Type="Self.UserInformation" Multiplicity="0..1" />
+          <End Role="PoleImages" Type="Self.PoleImages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInformation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PoleImages">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
         <Association Name="Fk_PoleInfo_PoleType">
           <End Role="PoleType" Type="Self.PoleType" Multiplicity="0..1" />
           <End Role="PoleInfo" Type="Self.PoleInfo" Multiplicity="*" />
@@ -107,6 +164,42 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="PoleInfo">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_PoleInfoChangeApply_PoleType">
+          <End Role="PoleType" Type="Self.PoleType" Multiplicity="0..1" />
+          <End Role="PoleInfoChangeApply" Type="Self.PoleInfoChangeApply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PoleType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PoleInfoChangeApply">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_PoleInfoChangeApply_UserInformation">
+          <End Role="UserInformation" Type="Self.UserInformation" Multiplicity="0..1" />
+          <End Role="PoleInfoChangeApply" Type="Self.PoleInfoChangeApply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInformation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PoleInfoChangeApply">
+              <PropertyRef Name="TaskAssainUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_PoleInfoChangeApply_UserInformation_UserID">
+          <End Role="UserInformation" Type="Self.UserInformation" Multiplicity="0..1" />
+          <End Role="PoleInfoChangeApply" Type="Self.PoleInfoChangeApply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInformation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PoleInfoChangeApply">
               <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
@@ -151,9 +244,19 @@
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="FileSavePath" EntityType="Self.FileSavePath" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PoleImages" EntityType="Self.PoleImages" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PoleInfo" EntityType="Self.PoleInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PoleInfoChangeApply" EntityType="Self.PoleInfoChangeApply" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="PoleType" EntityType="Self.PoleType" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="UserInformation" EntityType="Self.UserInformation" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="Fk_PoleImages_PoleInfo" Association="Self.Fk_PoleImages_PoleInfo">
+            <End Role="PoleInfo" EntitySet="PoleInfo" />
+            <End Role="PoleImages" EntitySet="PoleImages" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_PoleImages_UserInformation_UserID" Association="Self.Fk_PoleImages_UserInformation_UserID">
+            <End Role="UserInformation" EntitySet="UserInformation" />
+            <End Role="PoleImages" EntitySet="PoleImages" />
+          </AssociationSet>
           <AssociationSet Name="Fk_PoleInfo_PoleType" Association="Self.Fk_PoleInfo_PoleType">
             <End Role="PoleType" EntitySet="PoleType" />
             <End Role="PoleInfo" EntitySet="PoleInfo" />
@@ -165,6 +268,18 @@
           <AssociationSet Name="Fk_PoleInfo_UserInformation_UserID" Association="Self.Fk_PoleInfo_UserInformation_UserID">
             <End Role="UserInformation" EntitySet="UserInformation" />
             <End Role="PoleInfo" EntitySet="PoleInfo" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_PoleInfoChangeApply_PoleType" Association="Self.Fk_PoleInfoChangeApply_PoleType">
+            <End Role="PoleType" EntitySet="PoleType" />
+            <End Role="PoleInfoChangeApply" EntitySet="PoleInfoChangeApply" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_PoleInfoChangeApply_UserInformation" Association="Self.Fk_PoleInfoChangeApply_UserInformation">
+            <End Role="UserInformation" EntitySet="UserInformation" />
+            <End Role="PoleInfoChangeApply" EntitySet="PoleInfoChangeApply" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_PoleInfoChangeApply_UserInformation_UserID" Association="Self.Fk_PoleInfoChangeApply_UserInformation_UserID">
+            <End Role="UserInformation" EntitySet="UserInformation" />
+            <End Role="PoleInfoChangeApply" EntitySet="PoleInfoChangeApply" />
           </AssociationSet>
           <AssociationSet Name="Fk_PoleType_UserInformation" Association="Self.Fk_PoleType_UserInformation">
             <End Role="UserInformation" EntitySet="UserInformation" />
@@ -214,6 +329,28 @@
             <End Role="UserInformation" EntitySet="UserInformations" />
             <End Role="PoleType" EntitySet="PoleTypes" />
           </AssociationSet>
+          <EntitySet Name="PoleInfoChangeApplies" EntityType="PoleInfoModel1.PoleInfoChangeApply" />
+          <AssociationSet Name="Fk_PoleInfoChangeApply_PoleType" Association="PoleInfoModel1.Fk_PoleInfoChangeApply_PoleType">
+            <End Role="PoleType" EntitySet="PoleTypes" />
+            <End Role="PoleInfoChangeApply" EntitySet="PoleInfoChangeApplies" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_PoleInfoChangeApply_UserInformation" Association="PoleInfoModel1.Fk_PoleInfoChangeApply_UserInformation">
+            <End Role="UserInformation" EntitySet="UserInformations" />
+            <End Role="PoleInfoChangeApply" EntitySet="PoleInfoChangeApplies" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_PoleInfoChangeApply_UserInformation_UserID" Association="PoleInfoModel1.Fk_PoleInfoChangeApply_UserInformation_UserID">
+            <End Role="UserInformation" EntitySet="UserInformations" />
+            <End Role="PoleInfoChangeApply" EntitySet="PoleInfoChangeApplies" />
+          </AssociationSet>
+          <EntitySet Name="PoleImages" EntityType="PoleInfoModel1.PoleImage" />
+          <AssociationSet Name="Fk_PoleImages_PoleInfo" Association="PoleInfoModel1.Fk_PoleImages_PoleInfo">
+            <End Role="PoleInfo" EntitySet="PoleInfoes" />
+            <End Role="PoleImage" EntitySet="PoleImages" />
+          </AssociationSet>
+          <AssociationSet Name="Fk_PoleImages_UserInformation_UserID" Association="PoleInfoModel1.Fk_PoleImages_UserInformation_UserID">
+            <End Role="UserInformation" EntitySet="UserInformations" />
+            <End Role="PoleImage" EntitySet="PoleImages" />
+          </AssociationSet>
           </EntityContainer>
         <EntityType Name="FileSavePath">
           <Key>
@@ -251,6 +388,7 @@
           <Property Name="UserID" Type="Int32" />
           <NavigationProperty Name="PoleInfoes" Relationship="PoleInfoModel1.Fk_PoleInfo_PoleType" FromRole="PoleType" ToRole="PoleInfo" />
           <NavigationProperty Name="UserInformation" Relationship="PoleInfoModel1.Fk_PoleType_UserInformation" FromRole="PoleType" ToRole="UserInformation" />
+          <NavigationProperty Name="PoleInfoChangeApplies" Relationship="PoleInfoModel1.Fk_PoleInfoChangeApply_PoleType" FromRole="PoleType" ToRole="PoleInfoChangeApply" />
         </EntityType>
         <EntityType Name="PoleInfo">
           <Key>
@@ -275,6 +413,7 @@
           <NavigationProperty Name="PoleType" Relationship="PoleInfoModel1.Fk_PoleInfo_PoleType" FromRole="PoleInfo" ToRole="PoleType" />
           <NavigationProperty Name="UserInformation" Relationship="PoleInfoModel1.Fk_PoleInfo_UserInformation" FromRole="PoleInfo" ToRole="UserInformation" />
           <NavigationProperty Name="UserInformation1" Relationship="PoleInfoModel1.Fk_PoleInfo_UserInformation_UserID" FromRole="PoleInfo" ToRole="UserInformation" />
+          <NavigationProperty Name="PoleImages" Relationship="PoleInfoModel1.Fk_PoleImages_PoleInfo" FromRole="PoleInfo" ToRole="PoleImage" />
           </EntityType>
         <Association Name="Fk_PoleInfo_PoleType">
           <End Type="PoleInfoModel1.PoleType" Role="PoleType" Multiplicity="0..1" />
@@ -308,6 +447,9 @@
           <NavigationProperty Name="PoleInfoes" Relationship="PoleInfoModel1.Fk_PoleInfo_UserInformation" FromRole="UserInformation" ToRole="PoleInfo" />
           <NavigationProperty Name="PoleInfoes1" Relationship="PoleInfoModel1.Fk_PoleInfo_UserInformation_UserID" FromRole="UserInformation" ToRole="PoleInfo" />
           <NavigationProperty Name="PoleTypes" Relationship="PoleInfoModel1.Fk_PoleType_UserInformation" FromRole="UserInformation" ToRole="PoleType" />
+          <NavigationProperty Name="PoleInfoChangeApplies" Relationship="PoleInfoModel1.Fk_PoleInfoChangeApply_UserInformation" FromRole="UserInformation" ToRole="PoleInfoChangeApply" />
+          <NavigationProperty Name="PoleInfoChangeApplies1" Relationship="PoleInfoModel1.Fk_PoleInfoChangeApply_UserInformation_UserID" FromRole="UserInformation" ToRole="PoleInfoChangeApply" />
+          <NavigationProperty Name="PoleImages" Relationship="PoleInfoModel1.Fk_PoleImages_UserInformation_UserID" FromRole="UserInformation" ToRole="PoleImage" />
         </EntityType>
         <Association Name="Fk_UserInformation_AspNetRoles">
           <End Type="PoleInfoModel1.AspNetRole" Role="AspNetRole" Multiplicity="0..1" />
@@ -365,6 +507,104 @@
               <PropertyRef Name="Id" />
             </Principal>
             <Dependent Role="PoleType">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PoleInfoChangeApply">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PoleID" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="TypeID" Type="Int32" />
+          <Property Name="TaskAddeddate" Type="DateTime" Precision="3" />
+          <Property Name="TaskPerformeddate" Type="DateTime" Precision="3" />
+          <Property Name="TaskAssainUserID" Type="Int32" />
+          <Property Name="ImageMapPath" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="AdjacentPoleHeight" Type="Double" />
+          <Property Name="TransFormerLoading" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="ImagesTakenpath" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="IsChanged" Type="Boolean" />
+          <Property Name="TaskCompleteDate" Type="DateTime" Precision="3" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PoleType" Relationship="PoleInfoModel1.Fk_PoleInfoChangeApply_PoleType" FromRole="PoleInfoChangeApply" ToRole="PoleType" />
+          <NavigationProperty Name="UserInformation" Relationship="PoleInfoModel1.Fk_PoleInfoChangeApply_UserInformation" FromRole="PoleInfoChangeApply" ToRole="UserInformation" />
+          <NavigationProperty Name="UserInformation1" Relationship="PoleInfoModel1.Fk_PoleInfoChangeApply_UserInformation_UserID" FromRole="PoleInfoChangeApply" ToRole="UserInformation" />
+        </EntityType>
+        <Association Name="Fk_PoleInfoChangeApply_PoleType">
+          <End Type="PoleInfoModel1.PoleType" Role="PoleType" Multiplicity="0..1" />
+          <End Type="PoleInfoModel1.PoleInfoChangeApply" Role="PoleInfoChangeApply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PoleType">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PoleInfoChangeApply">
+              <PropertyRef Name="TypeID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_PoleInfoChangeApply_UserInformation">
+          <End Type="PoleInfoModel1.UserInformation" Role="UserInformation" Multiplicity="0..1" />
+          <End Type="PoleInfoModel1.PoleInfoChangeApply" Role="PoleInfoChangeApply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInformation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PoleInfoChangeApply">
+              <PropertyRef Name="TaskAssainUserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_PoleInfoChangeApply_UserInformation_UserID">
+          <End Type="PoleInfoModel1.UserInformation" Role="UserInformation" Multiplicity="0..1" />
+          <End Type="PoleInfoModel1.PoleInfoChangeApply" Role="PoleInfoChangeApply" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInformation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PoleInfoChangeApply">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="PoleImage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PoleInfoID" Type="Int32" />
+          <Property Name="ImageMapPath" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="Int32" />
+          <Property Name="Notes" Type="String" MaxLength="1000" FixedLength="false" Unicode="true" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" />
+          <Property Name="UpdateDate" Type="DateTime" Precision="3" />
+          <NavigationProperty Name="PoleInfo" Relationship="PoleInfoModel1.Fk_PoleImages_PoleInfo" FromRole="PoleImage" ToRole="PoleInfo" />
+          <NavigationProperty Name="UserInformation" Relationship="PoleInfoModel1.Fk_PoleImages_UserInformation_UserID" FromRole="PoleImage" ToRole="UserInformation" />
+        </EntityType>
+        <Association Name="Fk_PoleImages_PoleInfo">
+          <End Type="PoleInfoModel1.PoleInfo" Role="PoleInfo" Multiplicity="0..1" />
+          <End Type="PoleInfoModel1.PoleImage" Role="PoleImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PoleInfo">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="PoleImage">
+              <PropertyRef Name="PoleInfoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="Fk_PoleImages_UserInformation_UserID">
+          <End Type="PoleInfoModel1.UserInformation" Role="UserInformation" Multiplicity="0..1" />
+          <End Type="PoleInfoModel1.PoleImage" Role="PoleImage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="UserInformation">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="PoleImage">
               <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
@@ -448,6 +688,41 @@
                 <ScalarProperty Name="AspNetRoleID" ColumnName="AspNetRoleID" />
                 <ScalarProperty Name="AspNetUserId" ColumnName="AspNetUserId" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PoleInfoChangeApplies">
+            <EntityTypeMapping TypeName="PoleInfoModel1.PoleInfoChangeApply">
+              <MappingFragment StoreEntitySet="PoleInfoChangeApply">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TaskCompleteDate" ColumnName="TaskCompleteDate" />
+                <ScalarProperty Name="IsChanged" ColumnName="IsChanged" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ImagesTakenpath" ColumnName="ImagesTakenpath" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="TransFormerLoading" ColumnName="TransFormerLoading" />
+                <ScalarProperty Name="AdjacentPoleHeight" ColumnName="AdjacentPoleHeight" />
+                <ScalarProperty Name="ImageMapPath" ColumnName="ImageMapPath" />
+                <ScalarProperty Name="TaskAssainUserID" ColumnName="TaskAssainUserID" />
+                <ScalarProperty Name="TaskPerformeddate" ColumnName="TaskPerformeddate" />
+                <ScalarProperty Name="TaskAddeddate" ColumnName="TaskAddeddate" />
+                <ScalarProperty Name="TypeID" ColumnName="TypeID" />
+                <ScalarProperty Name="PoleID" ColumnName="PoleID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PoleImages">
+            <EntityTypeMapping TypeName="PoleInfoModel1.PoleImage">
+              <MappingFragment StoreEntitySet="PoleImages">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="Notes" ColumnName="Notes" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ImageMapPath" ColumnName="ImageMapPath" />
+                <ScalarProperty Name="PoleInfoID" ColumnName="PoleInfoID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

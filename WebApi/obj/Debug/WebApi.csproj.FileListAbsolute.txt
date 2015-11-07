@@ -35,40 +35,40 @@ D:\Development\ImranSir\PoleInfo\WebApi\bin\EntityFramework.SqlServer.dll
 D:\Development\ImranSir\PoleInfo\WebApi\bin\EntityFramework.xml
 D:\Development\ImranSir\PoleInfo\WebApi\bin\EntityFramework.SqlServer.xml
 D:\Development\ImranSir\PoleInfo\WebApi\bin\WebActivatorEx.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\WebApi.dll.config
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\WebApi.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\WebApi.pdb
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\Antlr3.Runtime.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\EntityFramework.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\EntityFramework.SqlServer.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\Microsoft.Web.Infrastructure.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\Newtonsoft.Json.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Net.Http.Formatting.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Web.Helpers.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Web.Http.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Web.Http.WebHost.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Web.Mvc.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Web.Optimization.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Web.Razor.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Web.WebPages.Deployment.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Web.WebPages.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Web.WebPages.Razor.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\WebActivatorEx.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\WebGrease.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\EntityFramework.xml
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\EntityFramework.SqlServer.xml
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Web.Helpers.xml
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Web.Mvc.xml
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Web.Optimization.xml
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Web.Razor.xml
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Web.WebPages.xml
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Web.WebPages.Deployment.xml
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Web.WebPages.Razor.xml
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\Newtonsoft.Json.xml
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Net.Http.Formatting.xml
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Web.Http.xml
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\System.Web.Http.WebHost.xml
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\bin\Antlr3.Runtime.pdb
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\obj\Debug\WebApi.csprojResolveAssemblyReference.cache
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\obj\Debug\WebApi.dll
-C:\Users\salva\Documents\GitHub\utilitypoleinspectionserverpage\WebApp\PoleInfo\WebApi\obj\Debug\WebApi.pdb
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\obj\Debug\WebApi.csprojResolveAssemblyReference.cache
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\obj\Debug\WebApi.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\obj\Debug\WebApi.pdb
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\WebApi.dll.config
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\WebApi.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\WebApi.pdb
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\Antlr3.Runtime.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\EntityFramework.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\EntityFramework.SqlServer.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\Newtonsoft.Json.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Net.Http.Formatting.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Web.Helpers.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Web.Http.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Web.Http.WebHost.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Web.Mvc.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Web.Optimization.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Web.Razor.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Web.WebPages.Deployment.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Web.WebPages.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Web.WebPages.Razor.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\WebActivatorEx.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\WebGrease.dll
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\EntityFramework.xml
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\EntityFramework.SqlServer.xml
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Web.Helpers.xml
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Web.Mvc.xml
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Web.Optimization.xml
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Web.Razor.xml
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Web.WebPages.xml
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Web.WebPages.Deployment.xml
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Web.WebPages.Razor.xml
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\Newtonsoft.Json.xml
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Net.Http.Formatting.xml
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Web.Http.xml
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\System.Web.Http.WebHost.xml
+C:\Users\salva\Downloads\Pole Update 20151105\Pole Update 20151105\PoleInfo\WebApi\bin\Antlr3.Runtime.pdb

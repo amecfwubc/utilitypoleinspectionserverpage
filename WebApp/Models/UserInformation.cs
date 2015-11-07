@@ -19,6 +19,9 @@ namespace WebApp.Models
             this.PoleInfoes = new HashSet<PoleInfo>();
             this.PoleInfoes1 = new HashSet<PoleInfo>();
             this.PoleTypes = new HashSet<PoleType>();
+            this.PoleInfoChangeApplies = new HashSet<PoleInfoChangeApply>();
+            this.PoleInfoChangeApplies1 = new HashSet<PoleInfoChangeApply>();
+            this.PoleImages = new HashSet<PoleImage>();
         }
     
         public int Id { get; set; }
@@ -38,5 +41,8 @@ namespace WebApp.Models
         public virtual ICollection<PoleInfo> PoleInfoes { get; set; }
         public virtual ICollection<PoleInfo> PoleInfoes1 { get; set; }
         public virtual ICollection<PoleType> PoleTypes { get; set; }
+        public virtual ICollection<PoleInfoChangeApply> PoleInfoChangeApplies { get; set; }
+        public virtual ICollection<PoleInfoChangeApply> PoleInfoChangeApplies1 { get; set; }
+        public virtual ICollection<PoleImage> PoleImages { get; set; }
     }
 }

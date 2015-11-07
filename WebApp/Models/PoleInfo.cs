@@ -14,6 +14,11 @@ namespace WebApp.Models
     
     public partial class PoleInfo
     {
+        public PoleInfo()
+        {
+            this.PoleImages = new HashSet<PoleImage>();
+        }
+    
         public int ID { get; set; }
         public string PoleID { get; set; }
         public Nullable<int> TypeID { get; set; }
@@ -34,5 +39,6 @@ namespace WebApp.Models
         public virtual PoleType PoleType { get; set; }
         public virtual UserInformation UserInformation { get; set; }
         public virtual UserInformation UserInformation1 { get; set; }
+        public virtual ICollection<PoleImage> PoleImages { get; set; }
     }
 }

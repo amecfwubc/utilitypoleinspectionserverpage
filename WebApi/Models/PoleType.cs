@@ -17,6 +17,7 @@ namespace WebApi.Models
         public PoleType()
         {
             this.PoleInfoes = new HashSet<PoleInfo>();
+            this.PoleInfoChangeApplies = new HashSet<PoleInfoChangeApply>();
         }
     
         public int ID { get; set; }
@@ -25,5 +26,6 @@ namespace WebApi.Models
     
         public virtual ICollection<PoleInfo> PoleInfoes { get; set; }
         public virtual UserInformation UserInformation { get; set; }
+        public virtual ICollection<PoleInfoChangeApply> PoleInfoChangeApplies { get; set; }
     }
 }
